@@ -1,0 +1,243 @@
+/* RESET BÁSICO E TIPOGRAFIA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #F9FAFB; /* Fundo levemente off-white */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff; /* Azul primário */
+}
+
+/* ESTILOS DO CABEÇALHO (Adicionado borda laranja de destaque) */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    border-bottom: 4px solid #FF6B00; /* Detahe de borda laranja */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #1F2E4A; /* Azul escuro tech */
+    font-size: 1.8em;
+}
+
+nav a {
+    margin-left: 25px;
+    font-weight: 500;
+    color: #333;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #FF6B00; /* Hover laranja */
+}
+
+.cta-button {
+    background-color: #FF6B00; /* CTA principal laranja */
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 4px; /* Cantos levemente mais quadrados */
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.cta-button:hover {
+    background-color: #e06000;
+}
+
+
+/* ESTILOS DO HERO (Fundo Azul Escuro Sólido) */
+.hero-section {
+    background-color: #1F2E4A; /* Azul escuro tech */
+    color: white;
+    padding: 120px 0; /* Aumentado o padding vertical */
+    text-align: center;
+}
+
+.hero-section h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.main-cta {
+    display: inline-block;
+    background-color: #FF6B00; /* CTA laranja */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+}
+
+.main-cta:hover {
+    background-color: #e06000;
+}
+
+/* ESTILOS DA SEÇÃO DE PROJETOS */
+.projects-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.projects-section h3 {
+    font-size: 2.2em;
+    color: #1F2E4A; /* Título em azul escuro */
+    margin-bottom: 50px;
+}
+
+/* ATIVANDO O FLEXBOX para o grid e permitindo quebrar a linha */
+.project-grid {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Cartões de Projeto com Detalhes Tech */
+.project-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 6px; 
+    box-shadow: 0 6px 15px rgba(31, 46, 74, 0.1); /* Sombra mais forte */
+    
+    /* Detalhe técnico: borda superior em azul primário */
+    border-top: 5px solid #007BFF;
+    
+    /* Força 100% de largura para empilhar os cards (melhor para iframes) */
+    flex: 1 1 100%; 
+    margin-bottom: 30px; 
+    
+    min-width: 280px; 
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h4 {
+    color: #1F2E4A;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Otimização para IFRAME */
+iframe {
+    width: 100%;
+    height: 450px; /* Altura ligeiramente ajustada */
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ESTILOS DA SEÇÃO DE CONTATO */
+.contact-section {
+    background-color: #ecf0f1;
+    padding: 60px 0;
+    text-align: center;
+    border-top: 2px solid #007BFF; /* Linha azul de separação */
+}
+
+.contact-section h3 {
+    color: #1F2E4A;
+    margin-bottom: 15px;
+}
+
+.contact-section p {
+    margin-bottom: 30px;
+}
+
+/* ESTILOS DO RODAPÉ */
+footer {
+    background-color: #1F2E4A; /* Rodapé em azul escuro */
+    color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* RESPONSIVIDADE - Ajustes para Telas até 768px (Tablets e Celulares) */
+@media (max-width: 768px) {
+    
+    /* Ajustes Gerais de Espaçamento */
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .projects-section {
+        padding: 40px 0;
+    }
+
+    /* Títulos Maiores */
+    .hero-section h2 {
+        font-size: 2em;
+    }
+    
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    .projects-section h3 {
+        font-size: 1.6em;
+        margin-bottom: 30px;
+    }
+
+    /* Cabeçalho e Navegação (Empilhamento) */
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 15px;
+        display: flex; 
+        justify-content: center;
+        gap: 15px; 
+    }
+
+    nav a {
+        margin: 0; 
+        padding: 6px 10px; 
+        font-size: 0.9em;
+    }
+    
+    /* Reduzindo a altura do iframe no mobile para economizar espaço */
+    iframe {
+        height: 300px; 
+    }
+}
