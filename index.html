@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 <body>
 
     <!-- CABEÇALHO E NAVEGAÇÃO -->
-    <header>
+    <!-- <header>
         <div class="container">
             <h1 class="logo">GuaraTech</h1>
             <nav>
@@ -18,26 +18,26 @@
                 <a href="#contato" class="cta-button">Fale Conosco</a>
             </nav>
         </div>
-    </header>
+    </header> -->
 
     <!-- SEÇÃO HERO (Proposta de Valor) -->
-    <section id="hero" class="hero-section">
+    <!-- <section id="hero" class="hero-section">
         <div class="container">
             <h2>Sua Inovação Começa Aqui.</h2>
             <p>Somos a GuaraTech. Transformamos ideias complexas em **soluções digitais robustas** e escaláveis, utilizando as últimas tecnologias para garantir que seu negócio esteja sempre à frente.</p>
             <a href="#projetos" class="main-cta">Conheça Nossos Projetos</a>
         </div>
-    </section>
+    </section> -->
 
     <!-- SEÇÃO DE PROJETOS -->
-    <section id="projetos" class="projects-section">
+    <!-- <section id="projetos" class="projects-section">
         <div class="container">
             <h3>Portfólio de Destaque</h3>
             
             <div class="project-grid">
                 
                 <!-- PROJETO 1: Jogo Quimicomon -->
-                <div class="project-card">
+                <!-- <div class="project-card">
                     <h4>Quimicomon: Jogo Educacional</h4>
                     <p>Site interativo para ensino de química, com foco em gamificação para engajamento estudantil.</p>
                     <iframe 
@@ -46,10 +46,10 @@
                         height="500px" 
                         frameborder="0"
                     ></iframe>
-                </div>
+                </div> -->
 
                 <!-- PROJETO 2: Template Cafeteria -->
-                <div class="project-card">
+                <!-- <div class="project-card">
                     <h4>Template: Pinscher's Cafeteria</h4>
                     <p>Design moderno e responsivo para um site de cafeteria, priorizando a experiência visual do usuário.</p>
                     <iframe 
@@ -59,9 +59,9 @@
                         frameborder="0"
                     ></iframe>
                 </div>
-                
+                 -->
                 <!-- PROJETO 3: Muay Thai -->
-                <div class="project-card">
+                <!-- <div class="project-card">
                     <h4>Landing Page: Academia de Muay Thai</h4>
                     <p>Página de alta conversão focada em captação de leads para aulas e agendamento de treinos experimentais.</p>
                     <iframe 
@@ -70,10 +70,10 @@
                         height="500px" 
                         frameborder="0"
                     ></iframe>
-                </div> 
+                </div>  -->
                 
                 <!-- PROJETO 4: Love You B -->
-                <div class="project-card">
+                <!-- <div class="project-card">
                     <h4>Site Institucional: Love You B</h4>
                     <p>Projeto de dias dos namorados, demonstrando habilidades em layout e design web criativo.</p>
                     <iframe 
@@ -96,23 +96,252 @@
             </div> 
             
         </div>
-    </section>
+    </section> --> -->
 
     <!-- SEÇÃO DE CONTATO -->
-    <section id="contato" class="contact-section">
+    <!-- <section id="contato" class="contact-section">
         <div class="container">
             <h3>Pronto para Inovar?</h3>
             <p>Entre em contato e descubra como a GuaraTech pode transformar sua ideia em realidade.</p>
             <a href="mailto:contato@guaratech.com.br" class="main-cta">Mande um E-mail</a>
             </div>
-    </section>
+    </section> -->
 
     <!-- RODAPÉ -->
-    <footer>
+    <!-- <footer>
         <div class="container">
             <p>&copy; 2025 GuaraTech. Todos os direitos reservados.</p>
+        </div>
+    </footer> --> 
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuaraTech | Soluções em Tecnologia</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Configuração de Cores e Fontes para o Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-purple': '#6d28d9', // Roxo Vibrante
+                        'brand-orange': '#f97316', // Laranja Vibrante
+                        'dark-bg': '#0a0a0a',      // Fundo preto/cinza escuro
+                        'dark-card': '#171717',    // Cor para os cards
+                        'dark-border': '#262626',  // Cor para as bordas
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos para a barra de rolagem */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f97316;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #fb923c;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased">
+
+    <!-- CABEÇALHO -->
+    <header class="sticky top-0 z-50 bg-dark-bg/80 backdrop-blur-lg border-b border-dark-border">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <a href="#" class="text-2xl font-bold text-white">Guara<span class="text-brand-orange">Tech</span></a>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#inicio" class="hover:text-brand-orange transition-colors">Início</a>
+                <a href="#quem-somos" class="hover:text-brand-orange transition-colors">Quem Somos</a>
+                <a href="#trabalhos" class="hover:text-brand-orange transition-colors">Nossos Trabalhos</a>
+                <a href="#contato" class="bg-brand-orange hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors">
+                    Entre em Contato
+                </a>
+            </nav>
+            <!-- Menu Mobile (opcional, mas bom para usabilidade) -->
+            <button class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO INÍCIO (HERO) -->
+        <section id="inicio" class="min-h-screen flex items-center bg-grid-dark">
+            <div class="container mx-auto text-center px-4 py-20">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-4">
+                    Transformamos Ideias em <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-orange to-brand-purple">Soluções Digitais</span> Poderosas
+                </h1>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-8">
+                    Na GuaraTech, combinamos design inovador e engenharia de software robusta para criar experiências digitais que impulsionam o seu negócio. Do conceito ao lançamento, estamos com você em cada passo.
+                </p>
+                <a href="#contato" class="bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform hover:scale-105 inline-block">
+                    Vamos Construir Algo Incrível
+                </a>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO QUEM SOMOS -->
+        <section id="quem-somos" class="py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Conheça Nossa Equipe</h2>
+                <p class="text-gray-400 mb-12">Os rostos por trás da inovação.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Membro 1 -->
+                    <div class="bg-dark-card border border-dark-border rounded-xl p-6 text-center transform hover:scale-105 hover:border-brand-purple transition-all duration-300">
+                        <img src="https://placehold.co/150x150/f97316/white?text=LF" alt="Foto de Laura Cordeiro" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-dark-border">
+                        <h3 class="text-xl font-bold text-white">Laura Cordeiro</h3>
+                        <p class="text-brand-orange font-semibold mb-2">Desenvolvedora Full-Stack</p>
+                        <p class="text-gray-400">Especialista em design via Figma e desenvolvimento web.</p>
+                    </div>
+                    <!-- Membro 2 -->
+                    <div class="bg-dark-card border border-dark-border rounded-xl p-6 text-center transform hover:scale-105 hover:border-brand-purple transition-all duration-300">
+                        <img src="https://placehold.co/150x150/6d28d9/white?text=MR" alt="Foto de Mateus Ribeiro" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-dark-border">
+                        <h3 class="text-xl font-bold text-white">Mateus Ribeiro</h3>
+                        <p class="text-brand-orange font-semibold mb-2">Desenvolvedor Full-Stack</p>
+                        <p class="text-gray-400">Especialista em Linux e desenvolvimento de E-Commerces.</p>
+                    </div>
+                    <!-- Membro 3 -->
+                    <div class="bg-dark-card border border-dark-border rounded-xl p-6 text-center transform hover:scale-105 hover:border-brand-purple transition-all duration-300">
+                        <img src="https://placehold.co/150x150/f97316/white?text=BV" alt="Foto de Bianca Veroneze" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-dark-border">
+                        <h3 class="text-xl font-bold text-white">Bianca Veroneze</h3>
+                        <p class="text-brand-orange font-semibold mb-2">Social Media</p>
+                        <p class="text-gray-400">Responsável pelas redes sociais da GuaraTech.</p>
+                    </div>
+                    <!-- Membro 4 -->
+                    <div class="bg-dark-card border border-dark-border rounded-xl p-6 text-center transform hover:scale-105 hover:border-brand-purple transition-all duration-300">
+                        <img src="https://placehold.co/150x150/6d28d9/white?text=LC" alt="Foto de Léo Cardan" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-dark-border">
+                        <h3 class="text-xl font-bold text-white">Léo Cardan</h3>
+                        <p class="text-brand-orange font-semibold mb-2">Comunicação e Marketing</p>
+                        <p class="text-gray-400">Especialista em comunicação e marketing digital.</p>
+                    </div>
+                    <!-- Membro 5 -->
+                    <div class="bg-dark-card border border-dark-border rounded-xl p-6 text-center transform hover:scale-105 hover:border-brand-purple transition-all duration-300">
+                        <img src="https://placehold.co/150x150/f97316/white?text=RR" alt="Foto de Rafael Rodrigues" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-dark-border">
+                        <h3 class="text-xl font-bold text-white">Rafael Rodrigues</h3>
+                        <p class="text-brand-orange font-semibold mb-2">Editor de Vídeos</p>
+                        <p class="text-gray-400">Dá vida às nossas ideias através de vídeos incríveis.</p>
+                    </div>
+                    <!-- Membro 6 -->
+                    <div class="bg-dark-card border border-dark-border rounded-xl p-6 text-center transform hover:scale-105 hover:border-brand-purple transition-all duration-300">
+                        <img src="https://placehold.co/150x150/6d28d9/white?text=MB" alt="Foto de Matheus Barbosa" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-dark-border">
+                        <h3 class="text-xl font-bold text-white">Matheus Barbosa</h3>
+                        <p class="text-brand-orange font-semibold mb-2">Desenvolvedor Full-Stack & Hardware</p>
+                        <p class="text-gray-400">Especialista em automatização e desenvolvimento de hardware.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO NOSSOS TRABALHOS -->
+        <section id="trabalhos" class="py-20 bg-dark-card border-y border-dark-border">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Nosso Portfólio</h2>
+                    <p class="text-gray-400">Uma amostra do que podemos construir para você.</p>
+                </div>
+                
+                <div class="space-y-16">
+                    <!-- PROJETO 1: Quimicomon -->
+                    <div class="bg-dark-bg border border-dark-border rounded-xl p-4 md:p-6 overflow-hidden">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-white">Quimicomon: Jogo Educacional</h3>
+                            <p class="text-gray-400">Site interativo para ensino de química, com foco em gamificação.</p>
+                        </div>
+                        <iframe src="https://laurafercordeiro.github.io/Jogo-Quimicomon/Jogo%20Site%20de%20Qu%C3%ADmica/Codigos/index.html" class="w-full h-96 md:h-[600px] rounded-lg" frameborder="0"></iframe>
+                    </div>
+                    <!-- PROJETO 2: Cafeteria -->
+                    <div class="bg-dark-bg border border-dark-border rounded-xl p-4 md:p-6 overflow-hidden">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-white">Template: Pinscher's Cafeteria</h3>
+                            <p class="text-gray-400">Design moderno e responsivo para um site de cafeteria.</p>
+                        </div>
+                        <iframe src="https://laurafercordeiro.github.io/Template-Cafeteria/Pinscher's%20Cafeteria/index.html" class="w-full h-96 md:h-[600px] rounded-lg" frameborder="0"></iframe>
+                    </div>
+                    <!-- PROJETO 3: Muay Thai -->
+                    <div class="bg-dark-bg border border-dark-border rounded-xl p-4 md:p-6 overflow-hidden">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-white">Landing Page: Academia de Muay Thai</h3>
+                            <p class="text-gray-400">Página de alta conversão focada em captação de leads.</p>
+                        </div>
+                        <iframe src="https://laurafercordeiro.github.io/Muay-Thai/index.html" class="w-full h-96 md:h-[600px] rounded-lg" frameborder="0"></iframe>
+                    </div>
+                    <!-- PROJETO 4: Love You B -->
+                    <div class="bg-dark-bg border border-dark-border rounded-xl p-4 md:p-6 overflow-hidden">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-white">Site Institucional: Love You B</h3>
+                            <p class="text-gray-400">Projeto de dias dos namorados, demonstrando habilidades em layout criativo.</p>
+                        </div>
+                        <iframe src="https://loveyoub.netlify.app" class="w-full h-96 md:h-[600px] rounded-lg" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE CONTATO -->
+        <section id="contato" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Vamos Conversar?</h2>
+                    <p class="text-gray-400 mb-8">Estamos prontos para ouvir sobre sua próxima grande ideia. Preencha o formulário abaixo e entraremos em contato.</p>
+                </div>
+                
+                <form action="mailto:laurafercordeiro@gmail.com" method="post" enctype="text/plain" class="max-w-xl mx-auto space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nome</label>
+                        <input type="text" name="nome" id="name" required class="w-full bg-dark-card border border-dark-border rounded-lg p-3 text-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition-all">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                        <input type="email" name="email" id="email" required class="w-full bg-dark-card border border-dark-border rounded-lg p-3 text-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition-all">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Mensagem</label>
+                        <textarea name="mensagem" id="message" rows="5" required class="w-full bg-dark-card border border-dark-border rounded-lg p-3 text-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition-all"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform hover:scale-105 inline-block">
+                            Enviar Mensagem
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-dark-card border-t border-dark-border">
+        <div class="container mx-auto text-center p-6">
+            <p class="text-gray-400">&copy; 2025 GuaraTech. Todos os direitos reservados.</p>
         </div>
     </footer>
 
 </body>
 </html>
+
+
