@@ -36,5 +36,7 @@
 }
 
 html, body {
-  height: 100%; /* Ajuda o Lenis a calcular a altura correta */
+  scroll-behavior: auto !important;
+  min-height: 100%; /* Use min-height em vez de height fixo */
+  overflow-x: hidden; /* Evita scrolls laterais fantasmas */
 }
