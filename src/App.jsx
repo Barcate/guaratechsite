@@ -3,6 +3,48 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Lenis from '@studio-freight/lenis';
 
+const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+
+  submitBtn.textContent = "Enviando...";
+  submitBtn.disabled = true;
+
+  // Captura os dados do formulário
+  const formData = new FormData(form);
+  // Converte para um objeto simples para garantir que a chave seja uma string pura
+  const object = Object.fromEntries(formData);
+  
+  // Força a access_key como String pura para evitar o erro de "extra spaces"
+  object.access_key = "55fed33c-2c36-489a-8e94-a7dcc614d2ef".trim();
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(object) // Enviando como JSON para maior compatibilidade
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      alert("Sucesso! Sua mensagem foi enviada.");
+      form.reset();
+    } else {
+      alert("Erro do Web3Forms: " + data.message);
+    }
+  } catch (error) {
+    alert("Algo deu errado na conexão. Tente novamente.");
+  } finally {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+};
 export default function App() {
   const [isMenuOpen, setIsOpen] = useState(false);
   const [categoriaAtiva, setCategoriaAtiva] = useState('Funcionamento');
@@ -477,29 +519,54 @@ export default function App() {
               </div>
 
               <div className="max-w-2xl mx-auto">
-                <form action="https://api.web3forms.com/submit" method="POST" className="bg-dark-card/40 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem]">
-                  <input type="hidden" name="access_key" value="55fed33c-2c36-489a-8e94-a7dcc614d2ef" />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-500 uppercase">Nome</label>
-                      <input name="name" type="text" required className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white outline-none focus:border-brand-primary transition-all" placeholder="Seu nome" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-500 uppercase">Email</label>
-                      <input name="email" type="email" required className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white outline-none focus:border-brand-primary transition-all" placeholder="seu@email.com" />
-                    </div>
+                <form 
+                onSubmit={handleFormSubmit} // Adicione isso
+                className="bg-dark-card/40 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem] shadow-2xl relative"
+              >
+                {/* IMPORTANTE: Os inputs precisam do atributo "name" para o FormData funcionar */}
+                <input type="hidden" name="access_key" value="55fed33c-2c36-489a-8e94-a7dcc614d2ef" />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Nome</label>
+                    <input 
+                      name="name" // Adicionado
+                      type="text" 
+                      required
+                      className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white focus:border-brand-primary outline-none transition-all" 
+                      placeholder="Seu nome" 
+                    />
                   </div>
-
-                  <div className="space-y-2 mb-8">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase">Mensagem</label>
-                    <textarea name="message" rows="4" required className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white outline-none focus:border-brand-primary transition-all" placeholder="Como podemos ajudar?"></textarea>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</label>
+                    <input 
+                      name="email" // Adicionado
+                      type="email" 
+                      required
+                      className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white focus:border-brand-primary outline-none transition-all" 
+                      placeholder="seu@email.com" 
+                    />
                   </div>
+                </div>
 
-                  <button type="submit" className="w-full bg-brand-primary hover:bg-brand-orange-dark text-white font-bold py-4 rounded-2xl shadow-xl transition-all">
-                    Enviar Mensagem
-                  </button>
-                </form>
+                <div className="space-y-2 mb-8">
+                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Mensagem</label>
+                  <textarea 
+                    name="message" // Adicionado
+                    required
+                    rows="4"
+                    className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white focus:border-brand-primary outline-none transition-all" 
+                    placeholder="Como podemos ajudar?"
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="w-full bg-brand-primary hover:bg-brand-orange-dark text-white font-bold py-4 rounded-2xl shadow-xl transition-all hover:scale-[1.02]"
+                >
+                  Enviar Mensagem
+                </button>
+              </form>
               </div>
             </div>
           </section>
