@@ -470,45 +470,35 @@ export default function App() {
           </section>
 
           {/* SEÇÃO CONTATO */}
-          <section id="contato" className="py-24 relative overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+         <section id="contato" className="py-24 relative">
             <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-3xl mx-auto text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-                  Vamos <span className="text-brand-primary">Conversar?</span>
-                </h2>
-                <p className="text-gray-400 text-lg">
-                        Estamos prontos para ouvir sobre sua próxima grande ideia. <br className="hidden md:block" /> 
-                        Preencha o formulário e retornaremos em breve.
-                    </p>
+                <h2 className="text-4xl md:text-5xl font-black mb-4">Vamos <span className="text-brand-primary">Conversar?</span></h2>
               </div>
 
               <div className="max-w-2xl mx-auto">
-                <form className="bg-dark-card/40 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem] shadow-2xl relative">
+                <form action="https://api.web3forms.com/submit" method="POST" className="bg-dark-card/40 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem]">
+                  <input type="hidden" name="access_key" value="55fed33c-2c36-489a-8e94-a7dcc614d2ef" />
+                  
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Nome</label>
-                      <input type="text" className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20" placeholder="Seu nome" />
+                      <label className="text-[10px] font-bold text-gray-500 uppercase">Nome</label>
+                      <input name="name" type="text" required className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white outline-none focus:border-brand-primary transition-all" placeholder="Seu nome" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</label>
-                      <input type="email" className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20" placeholder="seu@email.com" />
+                      <label className="text-[10px] font-bold text-gray-500 uppercase">Email</label>
+                      <input name="email" type="email" required className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white outline-none focus:border-brand-primary transition-all" placeholder="seu@email.com" />
                     </div>
                   </div>
+
                   <div className="space-y-2 mb-8">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Mensagem</label>
-                    <textarea rows="4" className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20" placeholder="Como podemos ajudar?"></textarea>
+                    <label className="text-[10px] font-bold text-gray-500 uppercase">Mensagem</label>
+                    <textarea name="message" rows="4" required className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white outline-none focus:border-brand-primary transition-all" placeholder="Como podemos ajudar?"></textarea>
                   </div>
-                  <div className="relative group">
-                            <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-orange-light to-brand-primary rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
-                            <button type="submit" 
-                                className="relative w-full bg-gradient-to-r from-brand-orange-light to-brand-primary text-white font-black py-5 rounded-2xl text-lg tracking-wide shadow-xl transition-all duration-300 transform group-hover:scale-[1.01] active:scale-[0.98]">
-                                Enviar Mensagem
-                            </button>
-                        </div>
-                   <p className="text-center text-gray-600 text-[10px] mt-6 uppercase tracking-widest font-medium">
-                            Resposta em menos de 24 horas úteis
-                    </p>
+
+                  <button type="submit" className="w-full bg-brand-primary hover:bg-brand-orange-dark text-white font-bold py-4 rounded-2xl shadow-xl transition-all">
+                    Enviar Mensagem
+                  </button>
                 </form>
               </div>
             </div>
