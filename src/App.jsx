@@ -174,7 +174,7 @@ export default function App() {
       <header className="fixed top-0 left-0 w-full z-50 bg-dark-bg/60 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
         <div className="container mx-auto flex justify-between items-center p-4"> {/* Removi as classes duplicadas aqui */}
           <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} className="flex items-center gap-3 group">
-            <img src="/images/logo.png" alt="Símbolo AmbaTech" className="h-10 w-auto group-hover:rotate-12 transition-transform" />
+            <img src="/images/logo.png" alt="Símbolo AmbaTech" className="h-12 w-auto group-hover:rotate-12 transition-transform" />
             <span className="flex text-2xl font-black tracking-tighter">
               <span className="FLogo">AMBA</span>
               <span className="FLogo2">TECH</span>
@@ -240,7 +240,21 @@ export default function App() {
               </span>
               <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tighter">
                 Transformamos Ideias em <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-orange-light via-brand-primary to-brand-purple pb-1 pr-2">
+                <span className="
+                  relative inline-block
+                  pb-1 pr-2
+                  bg-clip-text text-transparent
+                  
+                  /* Configuração do Background */
+                  bg-[length:300%_100%]
+                  animate-shimmer
+                  
+                  /* Gradiente Personalizado para Loop Perfeito:
+                    Roxo -> Laranja -> Branco -> Laranja -> Roxo
+                    O 'via-white' manual em 50% cria o feixe de luz.
+                  */
+                  bg-[linear-gradient(110deg,#f48131_0%,#e5672c_25%,#ff60a5_50%,#4f297c_75%,#f48131_100%)]
+                ">
                   Experiências Digitais
                 </span>
               </h1>

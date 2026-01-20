@@ -6,6 +6,16 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '100% 0' },
+          '100%': { backgroundPosition: '-100% 0' },
+        },
+      },
+      animation: {
+        // Mais rápido (3.5s) para dar sensação de brilho
+        shimmer: 'shimmer 8s linear infinite',
+      },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
