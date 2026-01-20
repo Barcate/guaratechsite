@@ -16,7 +16,7 @@ const handleFormSubmit = async (e) => {
   const formData = new FormData(form);
   // Converte para um objeto simples para garantir que a chave seja uma string pura
   const object = Object.fromEntries(formData);
-  
+
   // Força a access_key como String pura para evitar o erro de "extra spaces"
   object.access_key = "55fed33c-2c36-489a-8e94-a7dcc614d2ef".trim();
 
@@ -57,6 +57,9 @@ export default function App() {
   const introLogoRef = useRef(null);
   const heroContentRef = useRef(null);
 
+  // REF PARA O LENIS (Novo)
+  const lenisRef = useRef(null);
+
   // SMOOTH SCROLL (Lenis com Cleanup)
   useEffect(() => {
     const lenis = new Lenis({
@@ -65,6 +68,8 @@ export default function App() {
       smoothWheel: true,
       wheelMultiplier: 1.2,
     });
+
+    lenisRef.current = lenis;
 
     // Função para atualizar o Lenis quando a página mudar de tamanho
     const resizeObserver = new ResizeObserver(() => {
@@ -84,6 +89,23 @@ export default function App() {
       resizeObserver.disconnect();
     };
   }, []);
+
+  const handleScrollTo = (e, targetId) => {
+    e.preventDefault();
+
+    // Fecha menu mobile se estiver aberto
+    if (isMenuOpen) setIsOpen(false);
+
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement && lenisRef.current) {
+      lenisRef.current.scrollTo(targetElement, {
+        offset: -80, // Compensação para o Header Fixo (ajuste conforme a altura do seu header)
+        duration: 1.5, // Duração da viagem do scroll
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Mesma curva do scroll natural
+      });
+    }
+  };
 
   const dadosFaq = {
     'Funcionamento': [
@@ -148,57 +170,53 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-dark-bg text-white font-sans selection:bg-brand-primary selection:text-white">
-{/* CABEÇALHO */}
-<header className="fixed top-0 left-0 w-full z-50 bg-dark-bg/60 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
-  <div className="container mx-auto flex justify-between items-center p-4"> {/* Removi as classes duplicadas aqui */}
-    <a href="#" className="flex items-center gap-3 group">
-      <img
-        src="/images/logo.png"
-        alt="Símbolo AmbaTech"
-        className="h-10 w-auto group-hover:rotate-12 transition-transform"
-      />
-      <span className="flex text-2xl font-black tracking-tighter italic">
-        <span className="FLogo">AMBA</span>
-        <span className="FLogo2">TECH</span>
-      </span>
-    </a>
+      {/* CABEÇALHO */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-dark-bg/60 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
+        <div className="container mx-auto flex justify-between items-center p-4"> {/* Removi as classes duplicadas aqui */}
+          <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} className="flex items-center gap-3 group">
+            <img src="/images/logo.png" alt="Símbolo AmbaTech" className="h-10 w-auto group-hover:rotate-12 transition-transform" />
+            <span className="flex text-2xl font-black tracking-tighter">
+              <span className="FLogo">AMBA</span>
+              <span className="FLogo2">TECH</span>
+            </span>
+          </a>
 
-    {/* Nav Desktop */}
-    <nav className="hidden md:flex space-x-8 items-center">
-      <a href="#inicio" className="text-sm font-medium hover:text-brand-primary transition-colors">Início</a>
-      <a href="#servicos" className="text-sm font-medium hover:text-brand-primary transition-colors">Serviços</a>
-      <a href="#trabalhos" className="text-sm font-medium hover:text-brand-primary transition-colors">Nossos Trabalhos</a>
-      <a href="#contato"
-        className="bg-brand-primary hover:bg-brand-orange-dark text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg shadow-brand-primary/20 transition-all hover:-translate-y-0.5">
-        Iniciar Projeto
-      </a>
-    </nav>
+          {/* Nav Desktop */}
+          <nav className="hidden md:flex space-x-8 items-center">
+            <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} className="text-sm font-medium hover:text-brand-primary transition-colors">Início</a>
+            <a href="#servicos" onClick={(e) => handleScrollTo(e, '#servicos')} className="text-sm font-medium hover:text-brand-primary transition-colors">Serviços</a>
+            <a href="#trabalhos" onClick={(e) => handleScrollTo(e, '#trabalhos')} className="text-sm font-medium hover:text-brand-primary transition-colors">Nossos Trabalhos</a>
+            <a href="#contato" onClick={(e) => handleScrollTo(e, '#contato')}
+              className="bg-brand-primary hover:bg-brand-orange-dark text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg shadow-brand-primary/20 transition-all hover:-translate-y-0.5">
+              Iniciar Projeto
+            </a>
+          </nav>
 
-    {/* Botão Mobile */}
-    <button
-      onClick={() => setIsOpen(!isMenuOpen)}
-      className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        {isMenuOpen ? (
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-        ) : (
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+          {/* Botão Mobile */}
+          <button
+            onClick={() => setIsOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Menu Mobile - Ajustado para Fixed também */}
+        {isMenuOpen && (
+          <div className="fixed top-[72px] left-0 w-full bg-dark-bg/95 backdrop-blur-2xl border-t border-white/10 p-4 space-y-4 shadow-2xl md:hidden">
+            <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} className="block hover:text-brand-primary">Início</a>
+            <a href="#servicos" onClick={(e) => handleScrollTo(e, '#servicos')} className="block hover:text-brand-primary">Serviços</a>
+            <a href="#trabalhos" onClick={(e) => handleScrollTo(e, '#trabalhos')} className="block hover:text-brand-primary">Nossos Trabalhos</a>
+            <a href="#contato" onClick={(e) => handleScrollTo(e, '#contato')} className="block text-brand-primary font-bold">Entre em Contato</a>
+          </div>
         )}
-      </svg>
-    </button>
-  </div>
-
-  {/* Menu Mobile - Ajustado para Fixed também */}
-  {isMenuOpen && (
-    <div className="fixed top-[72px] left-0 w-full bg-dark-bg/95 backdrop-blur-2xl border-t border-white/10 p-4 space-y-4 shadow-2xl md:hidden">
-      <a href="#inicio" onClick={closeMenu} className="block hover:text-brand-primary">Início</a>
-      <a href="#servicos" onClick={closeMenu} className="block hover:text-brand-primary">Serviços</a>
-      <a href="#trabalhos" onClick={closeMenu} className="block hover:text-brand-primary">Nossos Trabalhos</a>
-      <a href="#contato" onClick={closeMenu} className="block text-brand-primary font-bold">Entre em Contato</a>
-    </div>
-  )}
-</header>
+      </header>
 
       <div ref={mainContainer}>
 
@@ -230,10 +248,12 @@ export default function App() {
                 Unimos design de ponta e tecnologia robusta para acelerar o crescimento do seu negócio no mundo digital.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contato" className="bg-brand-primary hover:bg-brand-orange-dark text-white font-bold py-4 px-10 rounded-xl text-lg shadow-2xl shadow-brand-primary/30 transition-all hover:scale-105">
+                <a href="#contato" onClick={(e) => handleScrollTo(e, '#contato')}
+                  className="bg-brand-primary hover:bg-brand-orange-dark text-white font-bold py-4 px-10 rounded-xl text-lg shadow-2xl shadow-brand-primary/30 transition-all hover:scale-105">
                   Vamos Conversar
                 </a>
-                <a href="#trabalhos" className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-10 rounded-xl text-lg border border-white/10 transition-all">
+                <a href="#trabalhos" onClick={(e) => handleScrollTo(e, '#trabalhos')}
+                  className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-10 rounded-xl text-lg border border-white/10 transition-all">
                   Ver Portfólio
                 </a>
               </div>
@@ -269,7 +289,7 @@ export default function App() {
                       <li className="flex items-center text-sm text-gray-300"><span className="text-brand-primary mr-2">✓</span> Otimização para SEO</li>
                       <li className="flex items-center text-sm text-gray-300"><span className="text-brand-primary mr-2">✓</span> Mobile First</li>
                     </ul>
-                    <a href="#contato" className="inline-flex items-center font-bold text-brand-orange-light hover:gap-2 transition-all">
+                    <a href="#contato" onClick={(e) => handleScrollTo(e, '#contato')} className="inline-flex items-center font-bold text-brand-orange-light hover:gap-2 transition-all cursor-pointer">
                       Solicitar orçamento <span className="ml-1">→</span>
                     </a>
                   </div>
@@ -291,7 +311,7 @@ export default function App() {
                       <li className="flex items-center text-sm text-gray-300"><span className="text-brand-purple mr-2">✓</span> Galeria Dinâmica</li>
                       <li className="flex items-center text-sm text-gray-300"><span className="text-brand-purple mr-2">✓</span> Performance Veloz</li>
                     </ul>
-                    <a href="#contato" className="inline-flex items-center font-bold text-brand-orange-light hover:gap-2 transition-all">
+                    <a href="#contato" onClick={(e) => handleScrollTo(e, '#contato')} className="inline-flex items-center font-bold text-brand-orange-light hover:gap-2 transition-all cursor-pointer">
                       Solicitar orçamento <span className="ml-1">→</span>
                     </a>
                   </div>
@@ -313,7 +333,7 @@ export default function App() {
                       <li className="flex items-center text-sm text-gray-300"><span className="text-brand-magenta mr-2">✓</span> Jornada do Usuário</li>
                       <li className="flex items-center text-sm text-gray-300"><span className="text-brand-magenta mr-2">✓</span> Design System</li>
                     </ul>
-                    <a href="#contato" className="inline-flex items-center font-bold text-brand-orange-light hover:gap-2 transition-all">
+                    <a href="#contato" onClick={(e) => handleScrollTo(e, '#contato')} className="inline-flex items-center font-bold text-brand-orange-light hover:gap-2 transition-all cursor-pointer">
                       Solicitar orçamento <span className="ml-1">→</span>
                     </a>
                   </div>
@@ -447,8 +467,8 @@ export default function App() {
                             setPerguntaAberta(null);
                           }}
                           className={`${colSpan} py-3 lg:py-4 px-4 rounded-2xl font-bold text-xs lg:text-lg transition-all border ${categoriaAtiva === cat
-                              ? 'bg-brand-primary text-white border-brand-primary'
-                              : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10'
+                            ? 'bg-brand-primary text-white border-brand-primary'
+                            : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10'
                             }`}
                         >
                           {cat}
@@ -468,8 +488,8 @@ export default function App() {
                         key={index}
                         // MUDANÇA AQUI: A cor de fundo e o hover agora ficam no container inteiro
                         className={`group rounded-2xl lg:rounded-3xl overflow-hidden border transition-all duration-300 ${isOpen
-                            ? 'bg-white/10 border-white/20 shadow-lg' // Se aberto: cor de fundo ativa fixa
-                            : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20' // Se fechado: cor normal + hover
+                          ? 'bg-white/10 border-white/20 shadow-lg' // Se aberto: cor de fundo ativa fixa
+                          : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20' // Se fechado: cor normal + hover
                           }`}
                       >
                         <button
@@ -511,72 +531,72 @@ export default function App() {
           </section>
 
           {/* SEÇÃO CONTATO */}
-         <section id="contato" className="py-24 relative">
+          <section id="contato" className="py-24 relative">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
             <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-3xl mx-auto text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-black mb-4">Vamos <span className="text-brand-primary">Conversar?</span></h2>
                 <p class="text-gray-400 text-lg">
-                        Estamos prontos para ouvir sobre sua próxima grande ideia. <br class="hidden md:block" /> 
-                        Preencha o formulário e retornaremos em breve.
+                  Estamos prontos para ouvir sobre sua próxima grande ideia. <br class="hidden md:block" />
+                  Preencha o formulário e retornaremos em breve.
                 </p>
               </div>
 
               <div className="max-w-2xl mx-auto">
-                <form 
-                onSubmit={handleFormSubmit} // Adicione isso
-                className="bg-dark-card/40 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem] shadow-2xl relative"
-              >
-                {/* IMPORTANTE: Os inputs precisam do atributo "name" para o FormData funcionar */}
-                <input type="hidden" name="access_key" value="55fed33c-2c36-489a-8e94-a7dcc614d2ef" />
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Nome</label>
-                    <input 
-                      name="name" // Adicionado
-                      type="text" 
-                      required
-                      className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20" 
-                      placeholder="Seu nome" 
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</label>
-                    <input 
-                      name="email" // Adicionado
-                      type="email" 
-                      required
-                      className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20" 
-                      placeholder="seu@email.com" 
-                    />
-                  </div>
-                </div>
+                <form
+                  onSubmit={handleFormSubmit} // Adicione isso
+                  className="bg-dark-card/40 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem] shadow-2xl relative"
+                >
+                  {/* IMPORTANTE: Os inputs precisam do atributo "name" para o FormData funcionar */}
+                  <input type="hidden" name="access_key" value="55fed33c-2c36-489a-8e94-a7dcc614d2ef" />
 
-                <div className="space-y-2 mb-8">
-                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Mensagem</label>
-                  <textarea 
-                    name="message" // Adicionado
-                    required
-                    rows="4"
-                    className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20" 
-                    placeholder="Como podemos ajudar?"
-                  ></textarea>
-                </div>
-                <div class="relative group">
-                  <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-orange-light to-brand-primary rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
-                  <button 
-                    type="submit" 
-                    className="relative w-full bg-gradient-to-r from-brand-orange-light to-brand-primary text-white font-black py-5 rounded-2xl text-lg tracking-wide shadow-xl transition-all duration-300 transform group-hover:scale-[1.01] active:scale-[0.98]"
-                  >
-                    Enviar Mensagem
-                  </button>
-                  
-                </div>
-                <p class="text-center text-gray-600 text-[10px] mt-6 uppercase tracking-widest font-medium">
-                            Resposta em menos de 24 horas úteis
-                        </p>
-              </form>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Nome</label>
+                      <input
+                        name="name" // Adicionado
+                        type="text"
+                        required
+                        className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20"
+                        placeholder="Seu nome"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</label>
+                      <input
+                        name="email" // Adicionado
+                        type="email"
+                        required
+                        className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20"
+                        placeholder="seu@email.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 mb-8">
+                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Mensagem</label>
+                    <textarea
+                      name="message" // Adicionado
+                      required
+                      rows="4"
+                      className="w-full bg-black/20 border border-white/10 rounded-2xl p-4 text-white placeholder:text-gray-700 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all duration-300 hover:border-white/20"
+                      placeholder="Como podemos ajudar?"
+                    ></textarea>
+                  </div>
+                  <div class="relative group">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-orange-light to-brand-primary rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
+                    <button
+                      type="submit"
+                      className="relative w-full bg-gradient-to-r from-brand-orange-light to-brand-primary text-white font-black py-5 rounded-2xl text-lg tracking-wide shadow-xl transition-all duration-300 transform group-hover:scale-[1.01] active:scale-[0.98]"
+                    >
+                      Enviar Mensagem
+                    </button>
+
+                  </div>
+                  <p class="text-center text-gray-600 text-[10px] mt-6 uppercase tracking-widest font-medium">
+                    Resposta em menos de 24 horas úteis
+                  </p>
+                </form>
               </div>
             </div>
           </section>
