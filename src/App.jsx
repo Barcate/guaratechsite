@@ -149,7 +149,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-dark-bg text-white font-sans selection:bg-brand-primary selection:text-white">
 {/* CABEÇALHO */}
-{/* CABEÇALHO */}
 <header className="fixed top-0 left-0 w-full z-50 bg-dark-bg/60 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
   <div className="container mx-auto flex justify-between items-center p-4"> {/* Removi as classes duplicadas aqui */}
     <a href="#" className="flex items-center gap-3 group">
@@ -159,8 +158,8 @@ export default function App() {
         className="h-10 w-auto group-hover:rotate-12 transition-transform"
       />
       <span className="flex text-2xl font-black tracking-tighter italic">
-        <span className="text-brand-orange-light">AMBA</span>
-        <span className="text-brand-purple">TECH</span>
+        <span className="FLogo">AMBA</span>
+        <span className="FLogo2">TECH</span>
       </span>
     </a>
 

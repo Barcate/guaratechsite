@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: FLogo;
+  src: url(/font/Horizon.otf);
+}
+.FLogo{
+  font-family: FLogo;
+  color: #e5672c;
+}
+.FLogo2{
+  font-family: FLogo;
+  color: purple;
+}
 .bg-grid-pattern {
   background-image: radial-gradient(
     circle at 2px 2px,
