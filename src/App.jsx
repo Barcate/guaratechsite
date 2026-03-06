@@ -399,9 +399,9 @@ export default function App() {
                 {/* Projeto 2 */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                   <div className="space-y-4">
-                    <span className="text-brand-orange-light font-bold tracking-widest text-xs uppercase">Landing Page / Business</span>
-                    <h3 className="text-3xl font-black text-white">Academia de Muay Thai</h3>
-                    <p className="text-gray-400 leading-relaxed">Página de conversão estratégica criada para captação de novos alunos, com integração de formulários e design agressivo e moderno.</p>
+                    <span className="text-brand-orange-light font-bold tracking-widest text-xs uppercase">Web Design / Imersivo / 3D</span>
+                    <h3 className="text-3xl font-black text-white">Portfólio Imersivo 3D: Laura Cordeiro</h3>
+                    <p className="text-gray-400 leading-relaxed">Site imersivo desenvolvido para exibir portfólios de uma desenvolvedora web, com foco em criatividade, imersão, diferenciação e 3D.</p>
                   </div>
                   <div className="group bg-dark-card border border-white/5 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:border-brand-orange-light/30">
                     <div className="bg-neutral-800/50 px-4 py-3 border-b border-white/5 flex items-center gap-2">
@@ -411,13 +411,13 @@ export default function App() {
                         <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
                       </div>
                       <div className="mx-auto bg-black/20 rounded-md px-3 py-1 text-[10px] text-gray-500 font-mono w-1/2 text-center">
-                        laura.github.io/muay-thai
+                        lauracordeiro-portfolio.vercel.app
                       </div>
                     </div>
                     <div className="relative overflow-hidden aspect-video">
-                      <img src="images/muay-thai-thumb.png" alt="Muay Thai" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
+                      <img src="images/LauraPortfolio.png" alt="Portfólio Imersivo Laura" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
                       <div className="absolute inset-0 bg-brand-orange-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <a href="https://laurafercordeiro.github.io/Muay-Thai/index.html" target="_blank" rel="noreferrer" className="bg-white text-brand-orange-dark px-6 py-2 rounded-full font-bold">Ver Projeto</a>
+                        <a href="https://lauracordeiro-portfolio.vercel.app" target="_blank" rel="noreferrer" className="bg-white text-brand-orange-dark px-6 py-2 rounded-full font-bold">Ver Projeto</a>
                       </div>
                     </div>
                   </div>
